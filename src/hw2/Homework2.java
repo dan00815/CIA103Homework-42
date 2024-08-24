@@ -11,11 +11,9 @@ public class Homework2 {
 
 //		請設計一隻Java程式,計算1~10的連乘積 (1*2*3*...*10) (用for迴圈)
 		int oneToTenMultiply = 1;
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 10; i++)
 			oneToTenMultiply *= i;
-			if (i == 10)
-				System.out.println("for迴圈, 1~10連乘積 " + oneToTenMultiply);
-		}
+		System.out.println("for迴圈, 1~10連乘積 " + oneToTenMultiply);
 
 //		請設計一隻Java程式,計算1~10的連乘積 (1*2*3*...*10) (用while迴圈)
 		int initial = 1;
@@ -23,9 +21,8 @@ public class Homework2 {
 		while (initial <= 10) {
 			oneToTenMultiply2 *= initial;
 			initial++;
-			if (initial == 10)
-				System.out.println("while迴圈, 1~10連乘積 " + oneToTenMultiply);
 		}
+		System.out.println("while迴圈, 1~10連乘積 " + oneToTenMultiply2);
 
 //		請設計一隻Java程式,輸出結果為以下:
 //		1 4 9 16 25 36 49 64 81 100
@@ -34,6 +31,7 @@ public class Homework2 {
 		}
 
 		System.out.println();
+
 //		阿文很熱衷大樂透 (1 ~ 49),但他不喜歡有4的數字,不論是個位數或是十位數。請設計一隻程式,
 //		輸出結果為阿文可以選擇的數字有哪些?總共有幾個?
 //		for跑1~49，有4的刪掉，其他的保留，還要有一個變數裝保留幾個，留下後+1，第二個變數裝保留下來的數字
@@ -46,14 +44,12 @@ public class Homework2 {
 				lotteryAmount++;
 				lotteryNum += (i + " ");
 			}
-			if (i == 49) {
-				System.out.println("有" + lotteryAmount + "個");
-				System.out.println("樂透可以選 " + lotteryNum);
-			}
 		}
+		System.out.println("可以選" + lotteryAmount + "個號碼");
+		System.out.println("分別是 " + lotteryNum);
 
 		System.out.println();
-		
+
 //		請設計一隻Java程式,輸出結果為以下:
 //		1 2 3 4 5 6 7 8 9 10
 //		1 2 3 4 5 6 7 8 9
@@ -77,20 +73,17 @@ public class Homework2 {
 //		請設計一隻Java程式,輸出結果為以下:
 //		A   //char 65
 //		BB  //char 66
-//		CCC
+//		CCC //char 67
 //		DDDD
 //		EEEEE
 //		FFFFFF
-		
+
 		System.out.println();
 
-		int alphaCode = 65;
+		int initialAlphaCode = 64;
 		for (int i = 1; i <= 6; i++) {
 			for (int j = 1; j <= i; j++) {
-				System.out.print((char) alphaCode);
-				if (j == i) {
-					alphaCode++;
-				}
+				System.out.print((char) (initialAlphaCode + i));
 			}
 			System.out.println();
 		}

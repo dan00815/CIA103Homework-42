@@ -3,9 +3,8 @@ package hw1;
 public class Homework1 {
 	public static void main(String[] args) {
 //		請設計一隻Java程式,計算12,6這兩個數值的和與積
-		int sum = 12 + 6, res = 12 * 6;
-		System.out.println("12+6 = " + sum);
-		System.out.println("12x6 = " + res);
+		System.out.println("12+6 = " + (12 + 6));
+		System.out.println("12x6 = " + (12 * 6));
 
 //		請設計一隻Java程式,計算200顆蛋共是幾打幾顆? (一打為12顆)
 		int egg = 200;
@@ -36,10 +35,12 @@ public class Homework1 {
 
 //		請寫一隻程式,利用System.out.println()印出以下三個運算式結果:
 //		並請用註解各別說明答案的產生原因
-//		5 + 5 	//整數相加
-//		5 + ‘5’ // '5'會被轉換成ASCII的53進行加法，所以答案是58
-//		5 + "5" // 答案55為String,會被轉換成String 5 + String 5 = String 55s
-
+//		5 + 5 	
+//		5 + ‘5’ 
+//		5 + "5" 
+		System.out.println(5 + 5); // 整數相加
+		System.out.println(5 + '5'); // '5'會被轉換成ASCII的53進行加法，所以答案是58
+		System.out.println(5 + "5");// 整數加字串，會被轉換為字串串接，前面的5會變成"5"與後面的"5"串接
 	}
 
 }
