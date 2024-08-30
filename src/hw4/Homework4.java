@@ -7,13 +7,14 @@ public class Homework4 {
 	public static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		work1();
-		System.out.println();
-		work2();
-		work3();
-		work4();
+//		work1();
+//		System.out.println();
+//		work2();
+//		work3();
+//		work4();
 		work5();
-		work6();
+//		work6();
+
 	}
 
 	public static void work1() {
@@ -97,9 +98,15 @@ public class Homework4 {
 //		第五題
 //		請設計由鍵盤輸入三個整數,分別代表西元yyyy年,mm月,dd日,執行後會顯示是該年的第幾天
 //		例:輸入 1984 9 8 三個號碼後,程式會顯示「輸入的日期為該年第252天」
-		int dayCount = 0; // 算總共幾天
+		int dayCount = 0; 
 		System.out.println("輸入三個整數");
 		int year = sc.nextInt(), month = sc.nextInt(), day = sc.nextInt();
+		while (year <= 0) { //year小於等於0，重新輸入
+			System.out.println("年份無效，請重新輸入");
+			year = sc.nextInt();
+			month = sc.nextInt();
+			day = sc.nextInt();
+		}
 		boolean leapYear = checkLeapYear(year); // 檢查閏年，是則回傳true
 		int feb = leapYear ? 29 : 28;
 		int[] dayArray = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -110,8 +117,6 @@ public class Homework4 {
 			month = sc.nextInt();
 			day = sc.nextInt();
 		}
-
-		int[] date = { year, month, day }; // 5/20挑4個月+20天,(month-1)月+day
 
 		for (int i = 0; i < month - 1; i++) {
 			dayCount += dayArray[i];
@@ -139,11 +144,12 @@ public class Homework4 {
 			}
 			scoreArray[6][highestIndex]++;
 		}
-		
+
 		for (int i = 0; i < scoreArray[6].length; i++) {
 			System.out.println((i + 1) + "號拿過" + scoreArray[6][i] + "次最高分");
 		}
 	}
+
 	
 	public static boolean checkLeapYear(int year) {
 		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
