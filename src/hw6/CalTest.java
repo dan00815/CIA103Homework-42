@@ -26,6 +26,7 @@ public class CalTest {
 					throw new CalException("輸入格式錯誤");
 				}
 				int y = sc.nextInt();
+				
 
 				cal.powerXY(x, y);
 				res = true;
