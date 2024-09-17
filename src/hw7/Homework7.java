@@ -2,12 +2,16 @@ package hw7;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
@@ -30,20 +34,24 @@ public class Homework7 {
 			}
 
 			System.out.println("Sample.txt檔案共有" + file.length() + "個位元組," + countChar + "個字元," + countLine + "列資料");
+			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	void hw7Item2() {
+//		請寫一隻程式,能夠亂數產生10個1~1000的整數,並寫入一個名為Data.txt的檔案裡 (請使用
+//		append功能讓每次執行結果都能被保存起來)
 		try {
 			FileOutputStream fo = new FileOutputStream("src/hw7/Data.txt", true);
 			PrintStream ps = new PrintStream(fo);
 
 			for (int i = 0; i < 10; i++) {
 				int random = (int) (Math.random() * 1000) + 1;
-				ps.println(random);
+				ps.print(random + ", ");
 			}
+			ps.println();
 
 			ps.close();
 			fo.close();
@@ -82,13 +90,57 @@ public class Homework7 {
 		}
 	}
 
-	public static void main(String[] args) {
-		Homework7 hw = new Homework7();
-//		hw.hw7Item1();
-//		hw.hw7Item2();
-		File f1 = new File("src/hw7/copy1.txt");
-		File f2 = new File("src/hw7/copy2.txt");
-		hw.copyFile(f1, f2);
+	void hw7Item4() {
+		Cat cat = new Cat("Meow");
+		Cat cat2 = new Cat("MeowWu");
+		Dog dog = new Dog("Wang");
+		Dog dog2 = new Dog("WangWang");
+		Animal[] Animals = { cat, cat2, dog, dog2 };
+
+		File dir = new File("C:/data");
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		File file = new File("C:/data/Object.ser");
+		try {
+			FileOutputStream fo = new FileOutputStream(file);
+			ObjectOutputStream oos = new ObjectOutputStream(fo);
+			for (int i = 0; i < Animals.length; i++) {
+				oos.writeObject(Animals[i]);
+			}
+
+			System.out.println("輸出完成");
+			oos.close();
+			fo.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	void hw7Item5() {
+		File file = new File("C:/data/Object.ser");
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			while (true) {
+				((Animal) ois.readObject()).speak();
+			}
+//			ois.close();
+//			fis.close();
+
+		} catch (EOFException e) {
+			System.out.println("資料讀取完畢！");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 
 	}
 
