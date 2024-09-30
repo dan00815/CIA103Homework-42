@@ -122,15 +122,12 @@ public class Homework7 {
 
 	void hw7Item5() {
 		File file = new File("C:/data/Object.ser");
-		try {
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
+		try (FileInputStream fis = new FileInputStream(file);
+			 ObjectInputStream ois = new ObjectInputStream(fis);) {
 
 			while (true) {
 				((Animal) ois.readObject()).speak();
 			}
-//			ois.close();
-//			fis.close();
 
 		} catch (EOFException e) {
 			System.out.println("資料讀取完畢！");

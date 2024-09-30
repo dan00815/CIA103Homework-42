@@ -7,13 +7,13 @@ public class Homework4 {
 	public static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		work1();
-		System.out.println();
-		work2();
-		work3();
-		work4();
+//		work1();
+//		System.out.println();
+//		work2();
+//		work3();
+//		work4();
 		work5();
-		work6();
+//		work6();
 
 	}
 
